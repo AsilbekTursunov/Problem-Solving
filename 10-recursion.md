@@ -50,32 +50,32 @@ function fib(n) {
 
 `yechimlar/10-recursion.js` da yeching. **Sikl (`for`/`while`) ishlatmang — faqat rekursiya.**
 
-**10.1.** 🟢 1 dan `n` gacha yig'indi (rekursiv).
-`5` → `15`
+**10.1.** 🟢 **1 dan `n` gacha yig'indi (rekursiv).** Butun son `n` berilgan. `1 + 2 + ... + n` yig'indisini rekursiya bilan hisoblang. *Ipuchi:* base case `n === 0` (yoki `1`), rekursiv holat `n + yigindiN(n-1)`.
+   - **Misol:** `5` → `15` — `1+2+3+4+5 = 15`.
 
-**10.2.** 🟢 Faktorial (rekursiv).
-`5` → `120`
+**10.2.** 🟢 **Faktorial (rekursiv).** Butun son `n` berilgan. `n!` = `1·2·3·...·n` ni rekursiya bilan hisoblang. *Ipuchi:* base case `0! = 1`, rekursiv holat `n · faktorial(n-1)`.
+   - **Misol:** `5` → `120` — `1·2·3·4·5 = 120`.
 
-**10.3.** 🟢 Daraja: `base` ning `exp`-darajasi.
-`(2, 10)` → `1024`
+**10.3.** 🟢 **Daraja: `base` ning `exp`-darajasi.** Ikki son `base` va `exp` berilgan. `base` ni `exp` marta o'ziga ko'paytirib (`base^exp`) natijani rekursiya bilan qaytaring. *Ipuchi:* base case `exp === 0` → `1`, rekursiv holat `base · daraja(base, exp-1)`.
+   - **Misol:** `(2, 10)` → `1024` — `2` ni 10 marta ko'paytirsak `1024`.
 
-**10.4.** 🟡 String'ni teskari aylantiring (rekursiv).
-`"abc"` → `"cba"`
+**10.4.** 🟡 **String'ni teskari aylantiring (rekursiv).** String berilgan. Harflari teskari tartibda joylashgan yangi stringni rekursiya bilan qaytaring. *Ipuchi:* base case bo'sh string, rekursiv holat "birinchi harfni oxiriga qo'yish" — `teskari(qolgani) + birinchi_harf`.
+   - **Misol:** `"abc"` → `"cba"`.
 
-**10.5.** 🟡 Sonning raqamlari yig'indisi (rekursiv).
-`1234` → `10`
+**10.5.** 🟡 **Sonning raqamlari yig'indisi (rekursiv).** Butun son berilgan. Uning barcha raqamlari yig'indisini rekursiya bilan hisoblang. *Ipuchi:* oxirgi raqam `n % 10`, qolgan qismi `Math.floor(n / 10)`; base case `n === 0`.
+   - **Misol:** `1234` → `10` — `1+2+3+4 = 10`.
 
-**10.6.** 🟡 Ikki sonning EKUB (GCD) — Evklid usuli: `gcd(a,b) = gcd(b, a%b)`.
-`(48, 18)` → `6`
+**10.6.** 🟡 **Ikki sonning EKUB (GCD) — Evklid usuli.** Ikki musbat son `a` va `b` berilgan. Ularning **eng katta umumiy bo'luvchisini** (ikkalasini ham qoldiqsiz bo'ladigan eng katta son) Evklid usuli bilan toping: `gcd(a, b) = gcd(b, a % b)`, `b === 0` bo'lganda javob `a`.
+   - **Misol:** `(48, 18)` → `6` — 48 va 18 ni ham qoldiqsiz bo'ladigan eng katta son 6.
 
-**10.7.** 🟡 `n`-Fibonachchi.
-`10` → `55`
+**10.7.** 🟡 **`n`-Fibonachchi.** Butun `n` berilgan. Fibonachchi ketma-ketligining `n`-a'zosini rekursiya bilan qaytaring (`0, 1, 1, 2, 3, 5, 8, ...`, har son oldingi ikkitasining yig'indisi). *Ipuchi:* base case `n < 2` → `n`, rekursiv holat `fib(n-1) + fib(n-2)`.
+   - **Misol:** `10` → `55` — 10-a'zo (0 dan sanaganda) `55`.
 
-**10.8.** 🟡 String palindrommi (rekursiv: chekka harflarni solishtir).
-`"kayak"` → `true`, `"olma"` → `false`
+**10.8.** 🟡 **String palindrommi? (rekursiv).** String berilgan. U **palindrom** — oldindan ham, orqadan ham bir xil o'qilsa — `true`, aks holda `false` qaytaring. *Ipuchi:* eng chetdagi ikki harfni solishtiring; teng bo'lsa ichkaridagi qismni tekshiring; base case sifatida 0 yoki 1 harfli string doim palindrom.
+   - **Misol:** `"kayak"` → `true` (teskari o'qilsa ham "kayak"), `"olma"` → `false`.
 
-**10.9.** 🟡 Massiv elementlari yig'indisi (rekursiv).
-`[1,2,3,4]` → `10`
+**10.9.** 🟡 **Massiv elementlari yig'indisi (rekursiv).** Sonlar massivi berilgan. Barcha elementlar yig'indisini rekursiya bilan hisoblang. *Ipuchi:* base case bo'sh massiv → `0`, rekursiv holat "birinchi element + qolgan massiv yig'indisi".
+   - **Misol:** `[1,2,3,4]` → `10` — `1+2+3+4 = 10`.
 
-**10.10.** 🔴 BONUS — Hanoi minorasi: `n` disk uchun minimal yurishlar soni.
-`3` → `7`  *(qoida: `hanoi(n) = 2·hanoi(n-1) + 1`)*
+**10.10.** 🔴 BONUS — **Hanoi minorasi: minimal yurishlar soni.** Disklar soni `n` berilgan. Hanoi minorasi jumbog'ida barcha `n` diskni ko'chirib bo'lish uchun kerak bo'ladigan **eng kam yurishlar sonini** rekursiya bilan qaytaring. *Qoida:* `hanoi(n) = 2·hanoi(n-1) + 1`, base case `hanoi(0) = 0`.
+   - **Misol:** `3` → `7` — 3 ta disk uchun minimal 7 yurish kerak.

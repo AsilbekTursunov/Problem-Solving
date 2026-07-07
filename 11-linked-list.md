@@ -64,32 +64,38 @@ function reverse(head) {
 
 `yechimlar/11-linked-list.js` da yeching. Fayl boshidagi `build`, `toArr`, `ListNode` yordamchilaridan foydalaning.
 
-**11.1.** 🟢 Ro'yxat uzunligi (nechta tugun bor).
-`build([1,2,3])` → `3`
+**11.1.** 🟢 **Ro'yxat uzunligi.** Bog'langan ro'yxat (qiymatlar `next` orqali zanjir bo'lib bog'langan tugunlar) ning boshi berilgan. Ro'yxatda nechta tugun borligini sanab, shu sonni qaytaring. Test uchun `build([...])` yordamchisi massivdan ro'yxat yasab beradi.
+   - **Misol:** `build([1,2,3])` → `3` — zanjirda 3 ta tugun bor.
 
-**11.2.** 🟢 Barcha qiymatlar yig'indisi.
-`build([1,2,3,4])` → `10`
+**11.2.** 🟢 **Qiymatlar yig'indisi.** Bog'langan ro'yxat berilgan. Barcha tugunlarning qiymatlarini qo'shib, umumiy yig'indini qaytaring.
+   - **Misol:** `build([1,2,3,4])` → `10` — chunki `1+2+3+4 = 10`.
 
-**11.3.** 🟡 O'rtadagi tugun qiymati (toq uzunlikda — aniq o'rta).
-`build([1,2,3,4,5])` → `3`  *(LeetCode 876)*
+**11.3.** 🟡 **O'rtadagi tugun.** **Toq** uzunlikdagi bog'langan ro'yxat berilgan (masalan 5 ta tugun). Aniq o'rtada turgan tugunning qiymatini qaytaring.
+   - **Misol:** `build([1,2,3,4,5])` → `3` — 5 tugundan o'rtadagisi (3-o'rin) `3`.
+   - *(LeetCode 876)*
 
-**11.4.** 🟡 Berilgan qiymat ro'yxatda bormi (`true`/`false`).
-`(build([1,2,3]), 2)` → `true`
+**11.4.** 🟡 **Qiymat bormi?** Bog'langan ro'yxat va `val` soni berilgan. Shu qiymatga teng tugun ro'yxatda uchrasa `true`, aks holda `false` qaytaring.
+   - **Misol:** `(build([1,2,3]), 2)` → `true` — ro'yxatda `2` qiymatli tugun bor.
 
-**11.5.** 🟡 Oxiridan `n`-tugun qiymati.
-`(build([1,2,3,4,5]), 2)` → `4`
+**11.5.** 🟡 **Oxiridan n-chi tugun.** Bog'langan ro'yxat va `n` soni berilgan. Ro'yxatning **oxiridan** sanaganda `n`-o'rinda turgan tugunning qiymatini qaytaring (oxirgisi 1-o'rin).
+   - **Misol:** `(build([1,2,3,4,5]), 2)` → `4` — oxiridan 2-tugun `4` (oxirgisi `5`, undan bittasi oldingisi `4`).
 
-**11.6.** 🟡 Berilgan qiymatli barcha tugunlarni o'chiring (`toArr` qaytaring).
-`(build([1,2,6,3,6]), 6)` → `[1,2,3]`  *(LeetCode 203)*
+**11.6.** 🟡 **Qiymatli tugunlarni o'chirish.** Bog'langan ro'yxat va `val` soni berilgan. Qiymati `val` ga teng **barcha** tugunlarni ro'yxatdan olib tashlang va natijani `toArr` (ro'yxatni massivga aylantiruvchi yordamchi) yordamida massiv ko'rinishida qaytaring.
+   - **Misol:** `(build([1,2,6,3,6]), 6)` → `[1,2,3]` — ikkala `6` tugun ham o'chirildi.
+   - *(LeetCode 203)*
 
-**11.7.** 🟡 Ikki **saralangan** ro'yxatni bitta saralangan ro'yxatga birlashtiring (`toArr`).
-`(build([1,3,5]), build([2,4]))` → `[1,2,3,4,5]`  *(LeetCode 21)*
+**11.7.** 🟡 **Ikki saralangan ro'yxatni birlashtirish.** O'sish tartibida **saralangan** ikkita bog'langan ro'yxat berilgan. Ularni bitta saralangan (o'sish tartibli) ro'yxatga birlashtiring va natijani `toArr` bilan massiv qilib qaytaring.
+   - **Misol:** `(build([1,3,5]), build([2,4]))` → `[1,2,3,4,5]` — ikkala ro'yxat qiymatlari aralashtirilib, o'sish tartibida chiqadi.
+   - *(LeetCode 21)*
 
-**11.8.** 🟡 Saralangan ro'yxatdan dublikatlarni o'chiring (`toArr`).
-`build([1,1,2,3,3])` → `[1,2,3]`  *(LeetCode 83)*
+**11.8.** 🟡 **Dublikatlarni o'chirish.** O'sish tartibida **saralangan** bog'langan ro'yxat berilgan. Takrorlangan qiymatlardan faqat bittasini qoldirib, qolganlarini o'chiring. Natijani `toArr` bilan massiv qilib qaytaring.
+   - **Misol:** `build([1,1,2,3,3])` → `[1,2,3]` — ikkitalik `1` va `3` lardan bittadan qoldi.
+   - *(LeetCode 83)*
 
-**11.9.** 🔴 Ro'yxat palindrommi (oldidan ham, orqadan ham bir xil)?
-`build([1,2,2,1])` → `true`  *(LeetCode 234)*
+**11.9.** 🔴 **Palindrom ro'yxat.** Bog'langan ro'yxat berilgan. Uning qiymatlari **oldidan o'qiganda ham, orqadan o'qiganda ham** bir xil bo'lsa `true`, aks holda `false` qaytaring.
+   - **Misol:** `build([1,2,2,1])` → `true` — `1,2,2,1` ketma-ketligi teskari o'qilganda ham aynan o'zi.
+   - *(LeetCode 234)*
 
-**11.10.** 🔴 BONUS — Ikki sonni qo'shing (raqamlar **teskari** saqlangan, `toArr`).
-`(build([2,4,3]), build([5,6,4]))` → `[7,0,8]`  *(342 + 465 = 807)* *(LeetCode 2)*
+**11.10.** 🔴 BONUS — **Ikki sonni qo'shish.** Har biri bitta sonni ifodalovchi ikkita bog'langan ro'yxat berilgan. Raqamlar **teskari** tartibda saqlangan: birinchi tugun — birlar xonasi, keyingisi — o'nlar xonasi va h.k. Ikki sonni qo'shib, natijani xuddi shunday teskari tartibda `toArr` bilan massiv qilib qaytaring.
+   - **Misol:** `(build([2,4,3]), build([5,6,4]))` → `[7,0,8]` — `[2,4,3]` = 342, `[5,6,4]` = 465, `342 + 465 = 807`, teskari yozilishi `[7,0,8]`.
+   - *(LeetCode 2)*

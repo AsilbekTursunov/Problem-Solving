@@ -52,32 +52,41 @@ function topKFrequent(nums, k) {
 
 `yechimlar/20-aralash.js` da yeching.
 
-**20.1.** 🟡 `sozTeskari(s)` — gapdagi so'zlarni teskari tartibda qaytaring (ortiqcha probelsiz).
-`"the sky is blue"` → `"blue is sky the"`  *(LeetCode 151)*
+**20.1.** 🟡 **So'zlarni teskari qilish.** `sozTeskari(s)` — bitta gap (matn) satri berilgan. Undagi so'zlar tartibini **teskari** qilib, bitta satr qaytaring. Har so'z orasida faqat bitta probel qolsin (boshidagi, oxiridagi va ortiqcha probellar tashlansin).
+   - **Misol:** `"the sky is blue"` → `"blue is sky the"` — so'zlar (harflari emas) teskari tartibda joylashdi.
+   - *(LeetCode 151)*
 
-**20.2.** 🟡 `kopchilik(arr)` — massivda yarmidan **ko'p** uchraydigan element.
-`[2,2,1,1,1,2,2]` → `2`  *(LeetCode 169)*
+**20.2.** 🟡 **Ko'pchilik element.** `kopchilik(arr)` — massivda **yarmidan ko'p** marta (ya'ni `n/2` dan ortiq) uchraydigan elementni qaytaring. Bunday element albatta bitta bor deb hisoblang (hash map bilan sanash yoki Boyer–Moore ovoz berish usuli ishlaydi).
+   - **Misol:** `[2,2,1,1,1,2,2]` → `2` — `2` to'rt marta uchradi, 7 tadan yarmidan ko'p.
+   - *(LeetCode 169)*
 
-**20.3.** 🟡 `umumiyPrefiks(arr)` — barcha satrlarning eng uzun umumiy boshlanishi (prefix).
-`["flower","flow","flight"]` → `"fl"`  *(LeetCode 14)*
+**20.3.** 🟡 **Umumiy prefiks.** `umumiyPrefiks(arr)` — satrlar massivi berilgan. Barcha satrlar uchun **umumiy bo'lgan eng uzun boshlang'ich bo'lak** (prefix = satr boshidan boshlanadigan qism) ni qaytaring. Umumiy boshlanish bo'lmasa, bo'sh satr `""` qaytaring.
+   - **Misol:** `["flower","flow","flight"]` → `"fl"` — uchalasi ham `fl` bilan boshlanadi, `flo` esa `flight` da yo'q.
+   - *(LeetCode 14)*
 
-**20.4.** 🟡 `birlashtirSarala(a, m, b, n)` — ikki saralangan massivni `a` ichiga birlashtiring (`a` da `m` ta haqiqiy son + `n` ta `0`; `b` da `n` ta son). Birlashgan `a` ni qaytaring.
-`([1,2,3,0,0,0], 3, [2,5,6], 3)` → `[1,2,2,3,5,6]`  *(LeetCode 88)*
+**20.4.** 🟡 **Ikki saralangan massivni birlashtirish.** `birlashtirSarala(a, m, b, n)` — `a` va `b` ikkalasi ham allaqachon saralangan. `a` massivida `m` ta haqiqiy son bor, keyin `n` ta `0` (bo'sh joy sifatida) turadi; `b` da esa `n` ta son bor. Ikkala ro'yxatni saralangan holicha **`a` ning ichiga** birlashtiring va yangilangan `a` ni qaytaring.
+   - **Misol:** `([1,2,3,0,0,0], 3, [2,5,6], 3)` → `[1,2,2,3,5,6]` — `b` ning sonlari `a` ga aralashtirilib, natija o'sib boruvchi tartibda.
+   - *(LeetCode 88)*
 
-**20.5.** 🟡 `palindromII(s)` — ko'pi bilan **1 ta** harf o'chirib palindrom qilsa bo'ladimi? (`true`/`false`)
-`"abca"` → `true`  *(LeetCode 680)*
+**20.5.** 🟡 **Palindromga aylantirish (1 harf o'chirish).** `palindromII(s)` — palindrom = teskari o'qilganda ham bir xil bo'lgan satr (masalan `"aba"`). Berilgan satrdan **ko'pi bilan bitta** harfni o'chirib palindrom hosil qilib bo'ladimi? `true` yoki `false` qaytaring (agar satr o'zi allaqachon palindrom bo'lsa ham `true`).
+   - **Misol:** `"abca"` → `true` — `c` (yoki `b`) harfini o'chirsak `"aba"` (palindrom) hosil bo'ladi.
+   - *(LeetCode 680)*
 
-**20.6.** 🟡 `kInchiKatta(arr, k)` — `k`-chi eng katta element.
-`([3,2,1,5,6,4], 2)` → `5`  *(LeetCode 215)*
+**20.6.** 🟡 **k-chi eng katta element.** `kInchiKatta(arr, k)` — massivdagi **k-chi eng katta** sonni qaytaring (`k=1` eng kattasi, `k=2` ikkinchi eng kattasi, ...). Bu tartibdagi element, takroriylar alohida sanalmaydi.
+   - **Misol:** `([3,2,1,5,6,4], 2)` → `5` — kattadan saralasak `6,5,4,...`, 2-eng katta `5`.
+   - *(LeetCode 215)*
 
-**20.7.** 🟡 `ranglarSarala(arr)` — faqat `0,1,2` lardan iborat massivni joyida saralang.
-`[2,0,2,1,1,0]` → `[0,0,1,1,2,2]`  *(LeetCode 75)*
+**20.7.** 🟡 **Ranglarni saralash.** `ranglarSarala(arr)` — massivda faqat `0`, `1`, `2` sonlari bor (bayroq ranglari deb tasavvur qiling). Massivni **joyida** (yangi massiv yaratmasdan) shunday tartiblangki, avval barcha `0` lar, keyin `1` lar, oxirida `2` lar tursin. O'zgargan massivni qaytaring.
+   - **Misol:** `[2,0,2,1,1,0]` → `[0,0,1,1,2,2]` — nol, bir, ikkilar guruh-guruh bo'lib joylashdi.
+   - *(LeetCode 75)*
 
-**20.8.** 🟡 `anagramSort(a, b)` — saralash orqali ikki satr anagrammi tekshiring (`true`/`false`).
-`("listen", "silent")` → `true`
+**20.8.** 🟡 **Anagram tekshirish (saralash bilan).** `anagramSort(a, b)` — anagram = bir xil harflardan, faqat tartibi boshqacha tuzilgan ikki satr. Ikki satrni **saralab**, natijalar teng bo'lsa ular anagram. `true` yoki `false` qaytaring.
+   - **Misol:** `("listen", "silent")` → `true` — ikkala so'z ham `eilnst` harflaridan iborat, faqat tartibi farq qiladi.
 
-**20.9.** 🔴 `uchYigindi(arr)` — yig'indisi `0` bo'lgan **noyob** uchliklar. (Har uchlik o'suvchi tartibda, ro'yxat ham tartiblangan.)
-`[-1,0,1,2,-1,-4]` → `[[-1,-1,2],[-1,0,1]]`  *(LeetCode 15)*
+**20.9.** 🔴 **Uch son yig'indisi (3Sum).** `uchYigindi(arr)` — massivdan **uchta** son tanlab, yig'indisi aynan `0` bo'lgan barcha **noyob** (takrorlanmaydigan) uchliklarni toping. Har uchlik ichidagi sonlar o'suvchi tartibda, natija ro'yxati ham tartiblangan bo'lsin.
+   - **Misol:** `[-1,0,1,2,-1,-4]` → `[[-1,-1,2],[-1,0,1]]` — `(-1)+(-1)+2=0` va `(-1)+0+1=0`; boshqa noyob uchlik yo'q.
+   - *(LeetCode 15)*
 
-**20.10.** 🔴 BONUS — `yomgirSuv(arr)` — har ustun balandligi berilgan. Yomg'irdan keyin ushlangan suv hajmini toping.
-`[0,1,0,2,1,0,1,3,2,1,2,1]` → `6`  *(LeetCode 42)*
+**20.10.** 🔴 BONUS — **Yomg'ir suvini ushlash.** `yomgirSuv(arr)` — har son bitta ustun (devor) balandligini bildiradi. Yomg'irdan so'ng ustunlar orasidagi chuqurchalarda **ushlanib qolgan suv hajmini** qaytaring. Har katak ustidagi suv = shu katakdan chapdagi eng baland va o'ngdagi eng baland ustunning kichigidan, katakning o'z balandligini ayirgani.
+   - **Misol:** `[0,1,0,2,1,0,1,3,2,1,2,1]` → `6` — pastliklarda jami 6 birlik suv to'planadi.
+   - *(LeetCode 42)*

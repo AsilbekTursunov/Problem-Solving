@@ -65,32 +65,40 @@ function rimSon(s) {
 
 `yechimlar/13-math.js` da yeching.
 
-**13.1.** 🟢 `ikkiDaraja(n)` — `n` 2 ning darajasimi? (`true`/`false`)
-`16` → `true`, `18` → `false`  *(LeetCode 231)*
+**13.1.** 🟢 **2 ning darajasimi.** `ikkiDaraja(n)` — musbat butun son `n` berilgan. Agar `n` ni 2 ning biror darajasi ko'rinishida yozish mumkin bo'lsa (`1, 2, 4, 8, 16, ...`) `true`, aks holda `false` qaytaring.
+   - **Misol:** `16` → `true` (chunki `2⁴ = 16`), `18` → `false` (18 ni 2 ning darajasi qilib yozib bo'lmaydi).
+   - *(LeetCode 231)*
 
-**13.2.** 🟢 `raqamIldiz(n)` — raqamlar yig'indisini bitta raqam qolguncha hisobla (digital root).
-`38` → `2`  *(3+8=11 → 1+1=2)*  *(LeetCode 258)*
+**13.2.** 🟢 **Raqamli ildiz (digital root).** `raqamIldiz(n)` — son berilgan. Uning raqamlarini qo'shing; natija ko'p xonali bo'lsa, yana raqamlarini qo'shishni **bitta raqam qolguncha** takrorlang va shu bitta raqamni qaytaring.
+   - **Misol:** `38` → `2` — `3+8=11`, keyin `1+1=2`.
+   - *(LeetCode 258)*
 
-**13.3.** 🟢 `plusOne(arr)` — raqamlar massivi bilan ifodalangan songa 1 qo'sh.
-`[1,2,3]` → `[1,2,4]`, `[9,9]` → `[1,0,0]`  *(LeetCode 66)*
+**13.3.** 🟢 **Songa 1 qo'shish.** `plusOne(arr)` — bir son berilgan, lekin uning har bir raqami massiv elementi sifatida saqlangan (`[1,2,3]` = 123 soni). Shu songa 1 qo'shib, natijani yana xuddi shunday raqamlar massivi ko'rinishida qaytaring. Oxirgi raqam 9 bo'lsa xona ko'chishini (perenos) hisobga oling.
+   - **Misol:** `[1,2,3]` → `[1,2,4]` (123+1=124); `[9,9]` → `[1,0,0]` (99+1=100).
+   - *(LeetCode 66)*
 
-**13.4.** 🟡 `tubSanash(n)` — `n` dan kichik nechta tub son bor?
-`10` → `4`  *(2, 3, 5, 7)*  *(LeetCode 204)*
+**13.4.** 🟡 **Tub sonlarni sanash.** `tubSanash(n)` — `n` soni berilgan. `n` dan **qat'iy kichik** (ya'ni `n` ning o'zi kirmaydi) nechta tub son borligini qaytaring. Tub son — 1 dan katta, faqat 1 ga va o'ziga bo'linadigan son.
+   - **Misol:** `10` → `4` — 10 dan kichik tublar: `2, 3, 5, 7` (jami 4 ta).
+   - *(LeetCode 204)*
 
-**13.5.** 🟡 `ekub(a, b)` — eng katta umumiy bo'luvchi (GCD, iterativ).
-`(48, 18)` → `6`
+**13.5.** 🟡 **EKUB (eng katta umumiy bo'luvchi).** `ekub(a, b)` — ikkita musbat butun son berilgan. Ikkalasini ham qoldiqsiz bo'ladigan eng katta sonni (GCD) toping va qaytaring.
+   - **Misol:** `(48, 18)` → `6` — 6 ham 48 ni, ham 18 ni qoldiqsiz bo'ladi, undan kattasi yo'q.
 
-**13.6.** 🟡 `ekuk(a, b)` — eng kichik umumiy karra (LCM).
-`(4, 6)` → `12`
+**13.6.** 🟡 **EKUK (eng kichik umumiy karra).** `ekuk(a, b)` — ikkita musbat butun son berilgan. Ikkalasiga ham qoldiqsiz bo'linadigan eng kichik sonni (LCM) toping va qaytaring.
+   - **Misol:** `(4, 6)` → `12` — 12 ham 4 ga, ham 6 ga bo'linadi, undan kichigi bunday emas.
 
-**13.7.** 🟡 `teskariSon(n)` — sonni teskari o'gir (ishora saqlanadi).
-`-123` → `-321`, `123` → `321`  *(LeetCode 7, overflow'ni e'tiborsiz qoldiring)*
+**13.7.** 🟡 **Sonni teskari o'girish.** `teskariSon(n)` — butun son berilgan. Uning raqamlarini teskari tartibda yozib chiqing; **ishora (musbat/manfiy) saqlanadi**.
+   - **Misol:** `-123` → `-321`, `123` → `321` — raqamlar teskari, minus o'z joyida qoladi.
+   - *(LeetCode 7, overflow'ni e'tiborsiz qoldiring)*
 
-**13.8.** 🟡 `baxtliSon(n)` — happy number'mi? (`true`/`false`)
-`19` → `true`  *(1²+9²=82 → 8²+2²=68 → ... → 1)*  *(LeetCode 202)*
+**13.8.** 🟡 **Baxtli son (happy number).** `baxtliSon(n)` — musbat butun son berilgan. Har qadamda sonni raqamlari kvadratlari yig'indisi bilan almashtiring; agar takrorlay-takrorlay `1` ga yetsa `true`, agar tsiklda aylanib qolib hech qachon 1 ga yetmasa `false` qaytaring.
+   - **Misol:** `19` → `true` — `1²+9²=82` → `8²+2²=68` → ... → oxir-oqibat `1`.
+   - *(LeetCode 202)*
 
-**13.9.** 🟡 `excelRaqam(s)` — Excel ustun nomini raqamga o'gir.
-`"AB"` → `28`  *(A=1, B=2; 1×26+2=28)*  *(LeetCode 171)*
+**13.9.** 🟡 **Excel ustun raqami.** `excelRaqam(s)` — Excel jadvalidagi ustun nomi (harflardan iborat string) berilgan (`A=1, B=2, ..., Z=26, AA=27, ...`). Shu nomga mos ustun tartib raqamini qaytaring — bu 26 asosidagi sanoq tizimiga o'xshaydi.
+   - **Misol:** `"AB"` → `28` — `A=1, B=2`, demak `1×26 + 2 = 28`.
+   - *(LeetCode 171)*
 
-**13.10.** 🔴 BONUS — `daraja(x, n)` — tez daraja: `x^n` hisobla.
-`(2, 10)` → `1024`, `(2, -2)` → `0.25`  *(LeetCode 50)*
+**13.10.** 🔴 BONUS — **Tez daraja.** `daraja(x, n)` — asos `x` (son) va daraja `n` (butun son) berilgan. `x` ni `n`-darajaga ko'tarib (`x^n`) natijani qaytaring. `n` manfiy bo'lsa natija kasr bo'ladi (`x⁻ⁿ = 1 / xⁿ`).
+   - **Misol:** `(2, 10)` → `1024` (`2¹⁰`); `(2, -2)` → `0.25` (`1 / 2² = 1/4`).
+   - *(LeetCode 50)*

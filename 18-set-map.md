@@ -68,32 +68,35 @@ function longestConsecutive(nums) {
 
 `yechimlar/18-set-map.js` da yeching.
 
-**18.1.** 🟢 Noyob (xil) elementlar soni.
-`[1,2,2,3,3,3]` → `3`
+**18.1.** 🟢 **Noyob elementlar soni.** Sonlar massivi berilgan. Unda **nechta xil** (bir-biridan farqli, takrorlanmaydigan) qiymat borligini qaytaring. Bir xil qiymat necha marta uchrasa ham faqat bir marta sanaladi.
+   - **Misol:** `[1,2,2,3,3,3]` → `3` — massivda faqat `1`, `2`, `3` degan 3 xil qiymat bor.
 
-**18.2.** 🟢 Dublikatlarni o'chir (tartibni saqlab).
-`[1,2,2,3,1]` → `[1,2,3]`
+**18.2.** 🟢 **Dublikatlarni o'chir (tartibni saqlab).** Sonlar massivi berilgan. Takrorlangan qiymatlarni olib tashlab, har bir qiymatning faqat **birinchi uchraganini** qoldiring; asl **tartibni saqlang**.
+   - **Misol:** `[1,2,2,3,1]` → `[1,2,3]` — ikkinchi `2` va oxirgi `1` takror bo'lgani uchun tashlab yuboriladi, qolganlari uchragan tartibda turadi.
 
-**18.3.** 🟡 Ikki massiv birlashmasi (union — saralangan, noyob).
-`([1,2,2],[2,3])` → `[1,2,3]`
+**18.3.** 🟡 **Ikki massiv birlashmasi (union).** Ikkita sonlar massivi berilgan. Ularning **birlashmasini** — ya'ni ikkalasida uchragan barcha qiymatlarni, har birini bir martadan (noyob), **o'sish tartibida** saralab qaytaring. (Birlashma = ikki to'plamning hamma elementlari birga.)
+   - **Misol:** `([1,2,2],[2,3])` → `[1,2,3]` — ikkala massivda uchragan qiymatlar `1,2,3`; takrorlar olib tashlanib saralanadi.
 
-**18.4.** 🟡 Ikki massiv kesishmasi (noyob).
-`([1,2,2,1],[2,2,3])` → `[2]`
+**18.4.** 🟡 **Ikki massiv kesishmasi.** Ikkita sonlar massivi berilgan. **Har ikkalasida ham** uchraydigan qiymatlarni, har birini bir martadan (noyob) qaytaring. (Kesishma = faqat ikkala to'plamda ham bor bo'lgan elementlar.)
+   - **Misol:** `([1,2,2,1],[2,2,3])` → `[2]` — ikkala massivda ham uchraydigan yagona qiymat `2`.
 
-**18.5.** 🟡 Birinchi takrorlangan element.
-`[2,1,3,5,3,2]` → `3`
+**18.5.** 🟡 **Birinchi takrorlangan element.** Sonlar massivi berilgan. Chapdan o'ngga yurganda **ikkinchi marta** uchragan (ya'ni oldin ko'rilgan) birinchi qiymatni qaytaring.
+   - **Misol:** `[2,1,3,5,3,2]` → `3` — `3` avval 3-o'rinda ko'rilgan, keyin 5-o'rinda yana uchraydi; bu `2` ning ikkinchi uchrashidan oldin sodir bo'ladi.
 
-**18.6.** 🟡 `0..n` dan yo'qolgan son.
-`[0,1,3]` → `2`
+**18.6.** 🟡 **Yo'qolgan sonni top.** `0` dan `n` gacha bo'lgan sonlardan bittasi tushib qolgan massiv berilgan (massivda `n` ta son bor). **Yetishmayotgan** sonni qaytaring.
+   - **Misol:** `[0,1,3]` → `2` — bu yerda `n=3`, ya'ni `0,1,2,3` bo'lishi kerak edi, lekin `2` yo'q.
 
-**18.7.** 🟡 `S` dagi nechta tosh `J` dagi javohir.
-`("aA","aAAbbbb")` → `3`  *(LeetCode 771)*
+**18.7.** 🟡 **Nechta tosh — javohir?** Ikki satr berilgan: `J` — javohir hisoblangan harflar (har biri noyob), `S` — sizdagi toshlar. `S` dagi harflardan **nechtasi** `J` da mavjudligini sanang. Katta va kichik harflar farqli hisoblanadi (`a` va `A` — boshqa-boshqa).
+   - **Misol:** `("aA","aAAbbbb")` → `3` — `S` dagi bitta `a` va ikkita `A` javohir (`aA` ichida bor), `b` lar javohir emas; jami `3`.
+   - *(LeetCode 771)*
 
-**18.8.** 🟡 Izomorf satrlar (bir-biriga to'liq mos almashtirish). (`true`/`false`)
-`("egg","add")` → `true`, `("foo","bar")` → `false`  *(LeetCode 205)*
+**18.8.** 🟡 **Izomorf satrlar.** Ikki bir xil uzunlikdagi satr berilgan. Agar birinchi satrning har bir harfini ikkinchisining mos harfiga **bir xilda almashtirib** (bir harf faqat bitta harfga, ikki xil harf bitta harfga emas) ikkinchi satrni to'liq hosil qilib bo'lsa `true`, aks holda `false` qaytaring.
+   - **Misol:** `("egg","add")` → `true`, `("foo","bar")` → `false` — `egg` da `e→a`, `g→d` mos keladi; `foo` da esa ikkala `o` `r` va `a` ga to'g'ri kelib, moslik buziladi.
+   - *(LeetCode 205)*
 
-**18.9.** 🟡 Anagram guruhlari soni.
-`["eat","tea","tan","ate","nat","bat"]` → `3`  *(LeetCode 49)*
+**18.9.** 🟡 **Anagram guruhlari soni.** Satrlar ro'yxati berilgan. Bir xil harflardan tuzilgan (faqat tartibi boshqacha bo'lgan) satrlar bitta **anagram guruhi** hisoblanadi. Nechta **alohida guruh** hosil bo'lishini qaytaring.
+   - **Misol:** `["eat","tea","tan","ate","nat","bat"]` → `3` — `{eat,tea,ate}`, `{tan,nat}` va `{bat}` degan 3 guruh chiqadi.
+   - *(LeetCode 49)*
 
-**18.10.** 🔴 BONUS — yig'indisi `0` bo'lgan pastki massiv (subarray) bormi? (`true`/`false`)
-`[4,2,-3,1,6]` → `true`
+**18.10.** 🔴 BONUS — **Yig'indisi 0 bo'lgan bo'lak bormi?** Sonlar massivi berilgan. Uning **ketma-ket** joylashgan biror bo'lagi (subarray) yig'indisi aynan `0` ga teng bo'lsa `true`, bunday bo'lak yo'q bo'lsa `false` qaytaring. Subarray — massivning yonma-yon turgan elementlaridan iborat qismi.
+   - **Misol:** `[4,2,-3,1,6]` → `true` — `[2,-3,1]` bo'lagining yig'indisi `2-3+1=0`.

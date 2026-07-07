@@ -123,7 +123,6 @@ function engUzunTakrorsiz(s) {
   return result
 }
 
-console.log("7.8 ", engUzunTakrorsiz("abcabcbb"), "| kutilgan: 3");
 
 
 // 7.9 — yig'indisi >= target eng qisqa uzunlik.  (7, [2,3,1,2,4,3]) -> 2
@@ -133,17 +132,42 @@ function minUzunlik(target, arr) {
   for (const item of arr) {
     result += item
     if (result >= target) {
-      return arr.indexOf(item)
+      return item
     }
   }
 }
 
 
 
+
 // 7.10 — BONUS k ta 0 ni almashtirib eng uzun 1 lar.  ([1,1,1,0,0,0,1,1,1,1,0], 2) -> 6
 function longestOnes(arr, k) {
   // TODO
+  let left = 0;        // oynaning chap cheti
+  let zeros = 0;       // oynadagi joriy 0 lar soni
+  let maxLen = 0;      // topilgan eng uzun oyna
+
+  for (let right = 0; right < arr.length; right++) {
+    // 1) O'ng chetni qo'shamiz — oynani kengaytiramiz
+    if (arr[right] === 0) {
+      zeros++;
+    }
+
+    // 2) Invariant buzilsa (0 lar k dan oshsa), chap chetni suramiz
+    while (zeros > k) {
+      if (arr[left] === 0) {
+        zeros--;
+      }
+      left++;
+    }
+
+    maxLen = Math.max(maxLen, right - left + 1);
+
+  }
+
+  return maxLen;
 }
+
 
 // ---------------- TEST ----------------
 console.log("7.1 ", minSumK([3, 1, 4, 1, 5, 9, 2], 2), "| kutilgan: 4");
