@@ -31,7 +31,7 @@ function buildPrefix(arr) {
   return result
 }
 
-console.log("8.2 ", JSON.stringify(buildPrefix([1, 2, 3, 4, 5, 6])), "| kutilgan: [1,3,6,10,15,21]");
+
 
 
 // 8.3 — Running max — har indeksgacha eng katta qiymat.
@@ -40,6 +40,13 @@ console.log("8.2 ", JSON.stringify(buildPrefix([1, 2, 3, 4, 5, 6])), "| kutilgan
 // Misol: [3,1,4,1,5] -> [3,3,4,4,5]   (3, max(3,1)=3, max(3,4)=4, ...)
 function prefixMax(arr) {
   // TODO
+  let right = 1
+  let result = [...arr]
+  while (right < arr.length) {
+    [result[right]] = [Math.max(result[right], result[right - 1])]
+    right++
+  }
+  return result
 }
 
 // 8.4 — Pivot indeks.
@@ -49,7 +56,28 @@ function prefixMax(arr) {
 // Misol: [1,7,3,6,5,6] -> 3   (chapi 1+7+3=11, o'ngi 5+6=11)
 function pivotIndex(arr) {
   // TODO
+  const length = arr.length;
+
+  for (const item of arr) {
+    let acc = { resultLeft: 0, resultRight: 0, result: 0 }
+    const index = arr.indexOf(item)
+    for (let i = 0; i < index; i++) {
+      acc.resultLeft += arr[i]
+    }
+
+    for (let i = index + 1; i < length; i++) {
+      acc.resultRight += arr[i]
+    }
+
+    if (acc.resultLeft === acc.resultRight) {
+      return index
+    } else if (index === length && acc.resultLeft !== acc.resultRight) {
+      return -1
+    }
+  }
+
 }
+
 
 // 8.5 — Maksimal pastki massiv yig'indisi (Kadane).
 // "Pastki massiv" = massivning ketma-ket (uzluksiz) bo'lagi.
@@ -57,6 +85,18 @@ function pivotIndex(arr) {
 // Misol: [-2,1,-3,4,-1,2,1,-5,4] -> 6   (eng yaxshi bo'lak [4,-1,2,1])
 function maxSubArray(arr) {
   // TODO
+  let maxValue = 0
+  arr.forEach((_, index) => {
+    let result = 0
+    for (let i = index; i < arr.length; i++) {
+      result += arr[i]
+      if (result > maxValue) {
+        maxValue = result
+      }
+    }
+
+  })
+  return maxValue
 }
 
 // 8.6 — Yig'indisi k ga teng pastki massivlar soni.
