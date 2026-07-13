@@ -25,14 +25,11 @@ function buildPrefix(arr) {
   let right = 1
   let result = [...arr]
   while (right < arr.length) {
-    [result[right]] = [result[right] + result[right - 1]]
+    ;[result[right]] = [result[right] + result[right - 1]]
     right++
   }
   return result
 }
-
-
-
 
 // 8.3 — Running max — har indeksgacha eng katta qiymat.
 // Yangi massiv qaytaring: har o'rinda "boshidan shu indeksgacha"
@@ -43,7 +40,7 @@ function prefixMax(arr) {
   let right = 1
   let result = [...arr]
   while (right < arr.length) {
-    [result[right]] = [Math.max(result[right], result[right - 1])]
+    ;[result[right]] = [Math.max(result[right], result[right - 1])]
     right++
   }
   return result
@@ -56,7 +53,7 @@ function prefixMax(arr) {
 // Misol: [1,7,3,6,5,6] -> 3   (chapi 1+7+3=11, o'ngi 5+6=11)
 function pivotIndex(arr) {
   // TODO
-  const length = arr.length;
+  const length = arr.length
 
   for (const item of arr) {
     let acc = { resultLeft: 0, resultRight: 0, result: 0 }
@@ -75,9 +72,7 @@ function pivotIndex(arr) {
       return -1
     }
   }
-
 }
-
 
 // 8.5 — Maksimal pastki massiv yig'indisi (Kadane).
 // "Pastki massiv" = massivning ketma-ket (uzluksiz) bo'lagi.
@@ -94,7 +89,6 @@ function maxSubArray(arr) {
         maxValue = result
       }
     }
-
   })
   return maxValue
 }
@@ -105,7 +99,17 @@ function maxSubArray(arr) {
 // Misol: ([1,1,1], 2) -> 2   (ikkita [1,1] bo'lagi bor)
 function subarraySumK(arr, k) {
   // TODO
+  let result = 0
+  let count = 0
+  for (const item of arr) {
+    result += item
+    count++
+    if (result == k) {
+      return count
+    }
+  }
 }
+// subarraySumK([1, 1, 1], 2)
 
 // 8.7 — O'zidan boshqa hammaning ko'paytmasi (bo'lishsiz).
 // Yangi massiv qaytaring: har o'rinda o'sha element bundan mustasno
@@ -113,6 +117,15 @@ function subarraySumK(arr, k) {
 // Misol: [1,2,3,4] -> [24,12,8,6]   (2*3*4=24, 1*3*4=12, ...)
 function productExceptSelf(arr) {
   // TODO
+  const result = arr.map((_, index) => {
+    let multiplication = 1
+    arr.forEach((gth, gthIndex) => {
+      if (gthIndex !== index) {
+        multiplication *= gth
+      }
+    })
+    return multiplication
+  })
 }
 
 // 8.8 — Bir nechta oraliq savoliga javob bering.
@@ -121,6 +134,17 @@ function productExceptSelf(arr) {
 // Misol: ([1,2,3,4,5], [[0,1],[2,4]]) -> [3,12]   (1+2=3, 3+4+5=12)
 function rangeSumQueries(arr, queries) {
   // TODO
+  const result = queries.reduce((acc, item, index) => {
+    const [from, to] = item
+    let result = 0
+    for (let i = from; i <= to; i++) {
+      result += arr[i]
+    }
+    acc.push(result)
+    return acc
+  }, [])
+
+  return result
 }
 
 // 8.9 — Eng kichik boshlang'ich qiymat.
@@ -129,6 +153,25 @@ function rangeSumQueries(arr, queries) {
 // Misol: [-3,2,-3,4,2] -> 5   (5 dan boshlasak yig'indi doim >= 1 qoladi)
 function minStartValue(arr) {
   // TODO
+  // TODO
+  let startValue = 0
+
+  for (let i = 1; true; i++) {
+    let result = i
+    for (let i = 0; i < arr.length - 1; i++) {
+      result += arr[i]
+      if (result > 0) {
+        continue
+      } else {
+        break
+      }
+    }
+    if (result > 0) {
+      startValue = i
+      break
+    }
+  }
+  return startValue
 }
 
 // 8.10 — BONUS: yig'indisi k bo'lgan eng uzun pastki massiv uzunligi.
@@ -137,16 +180,39 @@ function minStartValue(arr) {
 // Misol: ([1,-1,5,-2,3], 3) -> 4   (bo'lak [1,-1,5,-2], yig'indisi 3, uzunligi 4)
 function maxSubArrayLen(arr, k) {
   // TODO
+  const result = arr.reduce(
+    (acc, item, index) => {
+      acc.result += item
+      if (acc.result === k) {
+        acc.index = index + 1
+      }
+      return acc
+    },
+    { result: 0, index: 0 },
+  )
+  return result.index
 }
 
 // ---------------- TEST ----------------
-console.log("8.1 ", rangeSum([2, 4, 6, 8], 1, 2), "| kutilgan: 10");
-console.log("8.2 ", JSON.stringify(buildPrefix([1, 2, 3, 4])), "| kutilgan: [1,3,6,10]");
-console.log("8.3 ", JSON.stringify(prefixMax([3, 1, 4, 1, 5])), "| kutilgan: [3,3,4,4,5]");
-console.log("8.4 ", pivotIndex([1, 7, 3, 6, 5, 6]), "| kutilgan: 3");
-console.log("8.5 ", maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]), "| kutilgan: 6");
-console.log("8.6 ", subarraySumK([1, 1, 1], 2), "| kutilgan: 2");
-console.log("8.7 ", JSON.stringify(productExceptSelf([1, 2, 3, 4])), "| kutilgan: [24,12,8,6]");
-console.log("8.8 ", JSON.stringify(rangeSumQueries([1, 2, 3, 4, 5], [[0, 1], [2, 4]])), "| kutilgan: [3,12]");
-console.log("8.9 ", minStartValue([-3, 2, -3, 4, 2]), "| kutilgan: 5");
-console.log("8.10", maxSubArrayLen([1, -1, 5, -2, 3], 3), "| kutilgan: 4 (bonus)");
+console.log('8.1 ', rangeSum([2, 4, 6, 8], 1, 2), '| kutilgan: 10')
+console.log('8.2 ', JSON.stringify(buildPrefix([1, 2, 3, 4])), '| kutilgan: [1,3,6,10]')
+console.log('8.3 ', JSON.stringify(prefixMax([3, 1, 4, 1, 5])), '| kutilgan: [3,3,4,4,5]')
+console.log('8.4 ', pivotIndex([1, 7, 3, 6, 5, 6]), '| kutilgan: 3')
+console.log('8.5 ', maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]), '| kutilgan: 6')
+console.log('8.6 ', subarraySumK([1, 1, 1], 2), '| kutilgan: 2')
+console.log('8.7 ', JSON.stringify(productExceptSelf([1, 2, 3, 4])), '| kutilgan: [24,12,8,6]')
+console.log(
+  '8.8 ',
+  JSON.stringify(
+    rangeSumQueries(
+      [1, 2, 3, 4, 5],
+      [
+        [0, 1],
+        [2, 4],
+      ],
+    ),
+  ),
+  '| kutilgan: [3,12]',
+)
+console.log('8.9 ', minStartValue([-3, 2, -3, 4, 2]), '| kutilgan: 5')
+console.log('8.10', maxSubArrayLen([1, -1, 5, -2, 3], 3), '| kutilgan: 4 (bonus)')
