@@ -12,7 +12,7 @@ Hash Map (JS'da `object {}` yoki `Map`) — "kalit → qiymat" juftliklari saqla
 > `([2, 7, 11, 15], 9)` → `[0, 1]` (chunki 2+7=9)
 
 ### 1-qadam: O'QI va TUSHUN
-- **Input:** massiv `[2,7,11,15]`, `target = 9`
+- **Input:** massiv `[2,7,11,15]`, `target = 9``
 - **Output:** ikki indeks `[0,1]`
 - **Asosiy fikr:** har bir son uchun menga "juft son" kerak — bu `target - shu son`.
 
