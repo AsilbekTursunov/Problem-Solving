@@ -183,7 +183,6 @@ function backspaceCompare(a, b) {
   }
   return wordOne.join("") === wordTwo.join('')
 }
-console.log("9.8 ", backspaceCompare("ab#c", "ad#c"), "| kutilgan: true");
 
 
 // 9.9 — Necha kundan keyin harorat oshadi.
