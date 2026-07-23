@@ -214,7 +214,14 @@ function kunlikHarorat(arr) {
 // ketma-ket / larni bittaga qisqartiring, oxiridagi ortiqcha / ni oling (ildiz / bo'lmasa).
 // Misol: "/home//foo/" -> "/home/foo"   (qo'sh // bitta bo'ladi, oxirgi / olib tashlanadi)
 function soddalashtir(path) {
-  // TODO
+  // TODO 
+  let result = ''
+  for (let i = 0; i < path.length; i++) {
+    if (((path[i] !== '/') || ('/' !== path[i + 1])) && undefined !== path[i + 1]) {
+      result += path[i]
+    }
+  }
+  return result
 }
 
 // ---------------- TEST ----------------
